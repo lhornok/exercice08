@@ -7,9 +7,7 @@ pipeline {
                 echo 'Pre-Build..'
                 sh 'pwd'
                 sh 'ls -l'
-                sh 'cd prestashop'
-                sh 'pwd'
-                sh 'php vendor/bin/phpunit tests'
+                sh 'cd prestashop ; composer phpunit-sf'
             }
         }
         stage('Test') {
