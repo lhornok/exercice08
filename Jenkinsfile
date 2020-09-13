@@ -5,9 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Pre-Build..'
-                sh 'pwd'
-                sh 'ls -l'
-                sh 'cd prestashop ; composer phpunit-sf'
+                dir ('prestashop'){
+                  sh 'composer phpunit-sf'
+                }
             }
         }
         stage('Test') {
