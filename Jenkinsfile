@@ -5,6 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Pre-Build..'
+                sh 'pwd'
+                sh 'ls -l'
             }
         }
         stage('Test') {
@@ -14,7 +16,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo i'Functionnal test..'
+                echo 'Functionnal test..'
             }
         }
     }
