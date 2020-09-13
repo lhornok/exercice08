@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Pre-Build..'
+                sh '/usr/bin/composer -h'
                 dir ('prestashop'){
                   sh '/usr/bin/composer phpunit-sf'
                 }
