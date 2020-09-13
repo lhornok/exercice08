@@ -1,0 +1,8 @@
+<?php return array (
+  0 => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController',
+  1 => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\Controller',
+  2 => 'PrestaShop\\Module\\Mbo\\Controller\\Admin\\ModuleCatalogController',
+  3 => 'PrestaShop\\Module\\Mbo\\Controller\\Admin\\ModuleRecommendedController',
+  4 => 'PrestaShop\\Module\\Mbo\\Controller\\Admin\\ModuleSelectionController',
+  5 => 'PrestaShop\\Module\\Mbo\\Controller\\Admin\\ThemeCatalogController',
+);

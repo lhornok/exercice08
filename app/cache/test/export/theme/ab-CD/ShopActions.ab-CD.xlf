@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="/home/vagrant/exercice08/prestashop" source-language="ab-CD" target-language="ab-CD" datatype="plaintext">
+    <body>
+      <trans-unit id="f06cdf0d376cf800a466db88d8886a79">
+        <source>Add Product</source>
+        <target>Add</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="cd0580f3190cf60b43aa9bf4c5cedcb6">
+        <source>Override Me</source>
+        <target>Overridden</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="7613f088e6207a6478b2ad3446b5eb9c">
+        <source>Override Me Twice</source>
+        <target>Overridden Twice</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="7177e0adfaf14e129e27bd06b55a10e6">
+        <source>Edit Product</source>
+        <target>Edit</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="3b3c6c627bd5d8bb364c72c33f82af1f">
+        <source>Delete Product</source>
+        <target>Delete</target>
+        <note>Line: </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

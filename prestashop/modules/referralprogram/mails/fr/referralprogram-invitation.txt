@@ -1,0 +1,17 @@
+{shop_url}
+
+{firstname_friend} {lastname_friend}, Rejoignez-nous !
+
+Your friend {firstname} {lastname} wants to refer you on [{shop_name}]({shop_url})!
+
+We are pleased to offer you a voucher worth {discount} that you can use on your next order. Get referred and earn a discount voucher of {discount}!
+
+[Pour nous rejoindre, rien de plus simple, cliquez ici !]({link})
+
+N'oubliez pas de renseigner l'adresse e-mail de l'ami qui vous parraine lors de votre inscription : {email}.
+
+Bien cordialement,
+
+[{shop_name}]({shop_url})
+
+Powered by [PrestaShop](http://www.prestashop.com/)
