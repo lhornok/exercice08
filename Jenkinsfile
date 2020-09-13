@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Prebuild') {
             steps {
                 echo 'Pre-Build..'
                 dir ('prestashop'){
@@ -11,14 +11,14 @@ pipeline {
                 sh 'rm /tmp/ps_dump.sql'
             }
         }
-        stage('Test') {
+        stage('Build') {
             steps {
                 echo 'Build..'
             }
         }
-        stage('Deploy') {
+        stage('Test') {
             steps {
-                echo 'Functionnal test..'
+                echo 'Test..'
             }
         }
     }
