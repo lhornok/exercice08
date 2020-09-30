@@ -21,11 +21,20 @@ pipeline {
                 dir ('build'){
                   sh 'packer build prestashop.json'
                 } 
+                dir ('docker'){
+                  sh 'docker-compose run -d docker-compose.yml'
+                }
             }
         }
         stage('Test') {
+            input{
+                message "Do you want to proceed tests ?"
+            }
             steps {
                 echo 'Test..'
+                dir ('docker'){
+                  sh 'docker-compose stop docker-compose.yml'
+                }
             }
         }
     }
