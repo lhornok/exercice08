@@ -1,0 +1,4 @@
+---
+# vars file for prestashop
+zipfilename: 'prestashop.zip'
+wwwfolder: '/var/www/html'

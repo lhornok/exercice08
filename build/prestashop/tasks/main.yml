@@ -1,0 +1,65 @@
+---
+# tasks file for prestashop
+
+#1. installation de unzip
+- name: install unzip
+  apt:
+    name: unzip
+    state: present
+    update_cache: true
+#2. copie fichier
+- name: copy site
+  copy:
+    src: prestashop.zip
+    dest: /tmp/{{ zipfilename }}
+#3. vérification dossier
+- name: check directory
+  stat:
+    path: "{{ wwwfolder }}"
+  register: my_folder
+#4. si le dossier existe
+- name: exist
+  debug:
+    msg: "Folder exist"
+  when: my_folder.stat.exists
+#5. si le dossier n'existe pas
+- name: Create dir if not exist
+  file:
+    path: "{{ wwwfolder }}"
+    state: directory
+    mode: 0755
+    group: root
+    owner: root
+  when: my_folder.stat.exists == false 
+#6. décompression du site
+- name: unzip
+  command:
+    cmd: unzip -d {{ wwwfolder }} /tmp/{{ zipfilename }}
+#7. Effacement du fichier pestatshop.zip
+- name: Ansible delete file example
+  file:
+    path: /tmp/{{ zipfilename }}
+    state: absent
+#8. Effacement du parameters.php
+- name: remove config db
+  file:
+    path: /var/www/html/prestashop/app/config/parameters.php
+    state: absent
+#9. Copie du fichier avec la conf DB
+- name: copy config db
+  copy:
+    src: parameters.php
+    dest: /var/www/html/prestashop/app/config/parameters.php
+#10. Effacement du .htaccess
+- name: remove .htaccess
+  file:
+    path: /var/www/html/.htaccess
+    state: absent
+#9. Copie du fichier .htaccess avec localhost
+- name: copy .htaccess
+  copy:
+    src: .htaccess
+    dest: /var/www/html/prestashop/.htaccess
+#13. Changement propriétaire dossier prestashop
+- name: "Change owner"
+  shell: chown -hR www-data:www-data /var/www/html/prestashop

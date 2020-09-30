@@ -1,0 +1,5 @@
+---
+# vars file for apache
+# var for /etc/apache2/sites-available/prestshop.conf
+alias_name: 'prestashop'
+site_dir: '/var/www/html/prestashop'

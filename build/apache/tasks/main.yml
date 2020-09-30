@@ -1,0 +1,33 @@
+---
+# tasks file for apache
+#1. Installation apache
+- name: "apache installation"
+  apt:
+    name: "apache2"
+    state: "latest"
+#2. Cette tâche active le service Apache
+- name: "apache service activation"
+  service:
+    name: "apache2"
+    state: "started"
+
+#3. Tâche qui permet d'ajouter un fichier de conf pour le site Wordpress
+- name: "prestashop conf file for apache"
+  template:
+    src: apache2.j2
+    dest: /etc/apache2/sites-available/prestashop.conf
+
+#4. Lance la commande a2ensite wordpress
+- name: "run a2ensite"
+  command:
+    cmd: a2ensite prestashop
+
+#5. Lance la commande a2enmod rewrite
+- name: "run a2ensite"
+  command:
+    cmd: a2enmod rewrite
+
+#6. Lance la commande a2ensite wordpress
+- name: "reload apache2"
+  command:
+    cmd: service apache2 reload

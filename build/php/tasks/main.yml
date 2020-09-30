@@ -1,0 +1,9 @@
+---
+# tasks file for php
+#
+- name: Install php
+  apt:
+    name: ['libapache2-mod-php', 'php', 'php-common', 'php-curl', 'php-gd', 'php-zip', 'php-simplexml', 'php-mbstring', 'php-intl', 'php-mysql'] 
+    state: "present"
+    force: yes
+    update_cache: yes

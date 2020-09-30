@@ -1,0 +1,34 @@
+{
+    "builders": [
+        {
+            "type": "docker",
+            "image": "lhornok/mybuntu:0.1",
+            "commit": "true",
+            "changes": [
+              "ENTRYPOINT /usr/sbin/apachectl -D FOREGROUND;"
+            ],
+            "pull": "true"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "ansible",
+            "playbook_file": "provision.yml"
+        }
+    ],
+    "post-processors": [
+        [
+            {
+                "type": "docker-tag",
+                "repository": "lhornok/mission08",
+                "tags": "1.0"
+            },
+            {
+                "type": "docker-push",
+                "login": "true",
+                "login_username": "lhornok",
+                "login_password": "@@@Salami111dockerhub"
+            }
+        ]
+    ]
+}
