@@ -9,6 +9,8 @@ pipeline {
                   sh '/usr/bin/composer phpunit-sf'
                 }
                 sh 'rm /tmp/ps_dump.sql'
+                sh 'zip -r build/prestashop/files/prestashop.zip prestashop/'
+                sh 'ls -l build/pestashop/files'
             }
         }
         stage('Build') {
