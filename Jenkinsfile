@@ -19,7 +19,7 @@ pipeline {
                 sh 'ls -l build/prestashop/files'
                 sh 'ls -l docker/dump'
                 dir ('build'){
-                  sh 'sudo packer build prestashop.json'
+                  sh 'packer build prestashop.json'
                 } 
             }
         }
