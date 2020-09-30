@@ -10,12 +10,14 @@ pipeline {
                 }
                 sh 'rm /tmp/ps_dump.sql'
                 sh 'zip -q -r build/prestashop/files/prestashop.zip prestashop/'
-                sh 'ls -l build/prestashop/files'
+                sh 'mysqldump -u prestashopuser -P 3306 -h 127.0.0.1 -p+QAY2wsx3edc prestashop > docker/dump/dump.sql'
             }
         }
         stage('Build') {
             steps {
                 echo 'Build..'
+                sh 'ls -l build/prestashop/files'
+                sh 'ls -l docker/dump'
             }
         }
         stage('Test') {
