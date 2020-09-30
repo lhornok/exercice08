@@ -1,6 +1,5 @@
 ---
 - hosts: default
-  become: true
   roles:
   - apache
   - php
