@@ -22,7 +22,7 @@ pipeline {
                   sh 'packer build prestashop.json'
                 } 
                 dir ('docker'){
-                  sh 'docker-compose run -d docker-compose.yml'
+                  sh 'docker-compose up -d'
                 }
             }
         }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 echo 'Test..'
                 dir ('docker'){
-                  sh 'docker-compose stop docker-compose.yml'
+                  sh 'docker-compose down --rmi all'
                 }
             }
         }
