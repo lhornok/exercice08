@@ -31,7 +31,9 @@ pipeline {
                 message "Do you want to proceed tests ?"
             }
             steps {
-                echo 'Test..'
+                echo 'Tests..'
+                dir ('tests'){
+                  sh 'python3 foxtests.py'
                 dir ('docker'){
                   sh 'docker-compose down --rmi all'
                 }
