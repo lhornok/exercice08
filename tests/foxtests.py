@@ -35,10 +35,15 @@ class FoxCommand(unittest.TestCase):
         main_page.click_search()
         time.sleep(2)
         main_page.link_article()
+        time.sleep(2)
         main_page.put_art_qty()
+        time.sleep(2)
         main_page.add_to_cart()
+        time.sleep(2)
         main_page.back()
+        time.sleep(2)
         main_page.display_cart()
+        time.sleep(2)
         assert main_page.check_article_cart(), "Article name not match ..."
         assert main_page.check_article_qty_cart(), "Article quantity not match ..."
 
