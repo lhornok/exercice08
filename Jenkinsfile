@@ -34,6 +34,7 @@ pipeline {
                 echo 'Tests..'
                 dir ('tests'){
                   sh 'python3 foxtests.py'
+                }
                 dir ('docker'){
                   sh 'docker-compose down --rmi all'
                 }
