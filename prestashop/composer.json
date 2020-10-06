@@ -190,7 +190,7 @@
         ],
         "phpunit-sf": [
             "@composer create-test-db",
-            "@php -d date.timezone=UTC ./vendor/bin/phpunit -c tests-legacy/sf-tests.xml"
+            "@php -d date.timezone=UTC ./vendor/bin/phpunit --log-junit /tmp/sf-tests-result.xml -c tests-legacy/sf-tests.xml"
         ],
         "phpunit-controllers": [
             "@composer create-test-db",
