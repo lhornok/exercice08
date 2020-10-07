@@ -3,6 +3,7 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.ui import WebDriverWait
 
 import page
 
@@ -29,22 +30,20 @@ class FoxCommand(unittest.TestCase):
          - Affiche du panier 
         """
 
-        time.sleep(2)
         main_page = page.MainPage(self.driver)
+        WebDriverWait(self.driver,20).until(expected_conditions.title_contains('DFTG'))
         assert main_page.is_title_matches(), "Title DFTG not found ..."
         main_page.search_text_element = "renard"
         main_page.click_search()
-        time.sleep(2)
+        WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Rechercher'))
         main_page.link_article()
-        time.sleep(2)
+        WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Coussin'))
         main_page.put_art_qty()
-        time.sleep(2)
         main_page.add_to_cart()
-        time.sleep(2)
         main_page.back()
         time.sleep(2)
         main_page.display_cart()
-        time.sleep(2)
+        WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Panier'))
         assert main_page.check_article_cart(), "Article name not match ..."
         assert main_page.check_article_qty_cart(), "Article quantity not match ..."
 
