@@ -32,6 +32,7 @@ pipeline {
             steps {
                 echo 'Tests..'
                 sh 'rm -f /tmp/results.xml'
+                sh 'sleep 60s'
                 sh 'wget http://localhost:8002/prestashop/fr/'
                 dir ('tests'){
                   sh '/usr/bin/py.test-3 --junitxml /tmp/results.xml foxtests.py'
