@@ -5,10 +5,12 @@ pipeline {
         stage('Prebuild') {
             steps {
                 echo 'Pre-Build..'
+                sh 'rm -f /tmp/sf-tests-result.xml'
                 dir ('prestashop'){
                   sh '/usr/bin/composer phpunit-sf'
                 }
-                sh 'rm /tmp/ps_dump.sql'
+                sh 'rm -f /tmp/ps_dump.sql'
+                sh 'mv /tmp/sf-tests-result.xml reports/'
                 sh 'zip -q -r build/prestashop/files/prestashop.zip prestashop/'
                 sh 'mysqldump -u prestashopuser -P 3306 -h 127.0.0.1 -p+QAY2wsx3edc prestashop > docker/dump/dump.sql'
             }
@@ -29,13 +31,20 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Tests..'
+                sh 'rm -f /tmp/results.xml'
                 dir ('tests'){
-                  sh 'python3 foxtests.py'
+                  sh '/usr/bin/py.test-3 --junitxml /tmp/results.xml foxtests.py'
                 }
+                sh 'mv /tmp/results.xml reports/'
                 dir ('docker'){
                   sh 'docker-compose down --rmi all'
                 }
             }
+        }
+    }
+    post {
+        always {
+            junit 'reports/*.xml'
         }
     }
 }
