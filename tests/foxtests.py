@@ -29,6 +29,7 @@ class FoxCommand(unittest.TestCase):
          - Affiche du panier 
         """
 
+        time.sleep(2)
         main_page = page.MainPage(self.driver)
         assert main_page.is_title_matches(), "Title DFTG not found ..."
         main_page.search_text_element = "renard"
