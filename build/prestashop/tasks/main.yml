@@ -62,4 +62,10 @@
     dest: /var/www/html/prestashop/.htaccess
 #13. Changement propriétaire dossier prestashop
 - name: "Change owner"
-  shell: chown -hR www-data:www-data /var/www/html/prestashop
+  file:
+    path: /var/www/html/prestashop
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+  #shell: chown -hR www-data:www-data /var/www/html/prestashop
