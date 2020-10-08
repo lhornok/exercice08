@@ -41,9 +41,9 @@ class FoxCommand(unittest.TestCase):
         main_page.put_art_qty()
         main_page.add_to_cart()
         main_page.back()
-        time.sleep(2)
+        time.sleep(4)
         main_page.display_cart()
-        WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Panier'))
+        #WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Panier'))
         assert main_page.check_article_cart(), "Article name not match ..."
         assert main_page.check_article_qty_cart(), "Article quantity not match ..."
 
