@@ -55,6 +55,9 @@ class MainPage(BasePage):
         element = self.driver.find_element(*MainPageLocators.ARTICLE_QTY_CART)
         return int(element.get_attribute('value')) == 2
 
+    def get(self, url):
+        return self.driver.get(url)
+
     def back(self):
         self.driver.back()
 
