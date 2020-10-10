@@ -17,10 +17,10 @@ class FoxCommand(unittest.TestCase):
     def setUp(self):
         self.options = webdriver.FirefoxOptions()
         self.options.set_preference("browser.privatebrowsing.autostart", True)
-        self.options.set_preference("browser.cache.disk.enable", False)
-        self.options.set_preference("browser.cache.memory.enable", False)
-        self.options.set_preference("browser.cache.offline.enable", False)
-        self.options.set_preference("network.http.use-cache", False)
+        #self.options.set_preference("browser.cache.disk.enable", False)
+        #self.options.set_preference("browser.cache.memory.enable", False)
+        #self.options.set_preference("browser.cache.offline.enable", False)
+        #self.options.set_preference("network.http.use-cache", False)
         self.options.headless=True
         self.driver = webdriver.Firefox(options=self.options)
         self.driver.get("http://localhost:8002/prestashop/fr/")
@@ -40,9 +40,9 @@ class FoxCommand(unittest.TestCase):
         assert main_page.is_title_matches(), "Title DFTG not found ..."
         main_page.search_text_element = "renard"
         main_page.click_search()
-        #WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Rechercher'))
+        WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Rechercher'))
         main_page.link_article()
-        #WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Coussin'))
+        WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Coussin'))
         main_page.put_art_qty()
         main_page.add_to_cart()
         main_page.get('http://localhost:8002/prestashop/fr/panier?action=show')
