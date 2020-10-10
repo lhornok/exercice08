@@ -43,6 +43,9 @@ pipeline {
         }
     }
     post {
+        input{
+            message "Do you want to end process ?"
+        }
         always {
             dir ('docker'){
               sh 'docker-compose down --rmi all'
