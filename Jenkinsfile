@@ -29,11 +29,11 @@ pipeline {
             }
         }
         stage('Test') {
+            input{
+                message "Do you want to proceed tests ?"
+            }
             steps {
                 echo 'Tests..'
-                input{
-                  message "Do you want to proceed tests ?"
-                }
                 sh 'rm -f /tmp/results.xml'
                 sh 'sleep 60s'
                 sh 'wget http://localhost:8002/prestashop/fr/'
