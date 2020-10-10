@@ -31,6 +31,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Tests..'
+                input{
+                  message "Do you want to proceed tests ?"
+                }
                 sh 'rm -f /tmp/results.xml'
                 sh 'sleep 60s'
                 sh 'wget http://localhost:8002/prestashop/fr/'
@@ -38,14 +41,14 @@ pipeline {
                   sh '/usr/bin/py.test-3 --junitxml /tmp/results.xml foxtests.py'
                 }
                 sh 'mv /tmp/results.xml reports/'
-                dir ('docker'){
-                  sh 'docker-compose down --rmi all'
-                }
             }
         }
     }
     post {
         always {
+            dir ('docker'){
+              sh 'docker-compose down --rmi all'
+            }
             junit 'reports/*.xml'
         }
     }
