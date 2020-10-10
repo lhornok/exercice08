@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from element import BasePageElement
 from locators import MainPageLocators
 from selenium.webdriver.common.keys import Keys
