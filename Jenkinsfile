@@ -40,6 +40,9 @@ pipeline {
                 }
                 sh 'mv /tmp/results.xml reports/'
             }
+            input{
+                message "Next ?"
+            }
         }
     }
     post {
