@@ -29,9 +29,6 @@ pipeline {
             }
         }
         stage('Test') {
-            input{
-                message "Do you want to proceed tests ?"
-            }
             steps {
                 echo 'Tests..'
                 sh './init.sh'
