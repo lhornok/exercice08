@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from selenium.webdriver.support.ui import WebDriverWait
 
 class BasePageElement(object):
