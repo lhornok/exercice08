@@ -17,6 +17,10 @@ class FoxCommand(unittest.TestCase):
     def setUp(self):
         self.options = webdriver.FirefoxOptions()
         self.options.set_preference("browser.privatebrowsing.autostart", True)
+        self.options.set_preference("browser.cache.disk.enable", False)
+        self.options.set_preference("browser.cache.memory.enable", False)
+        self.options.set_preference("browser.cache.offline.enable", False)
+        self.options.set_preference("network.http.use-cache", False)
         self.options.headless=True
         self.driver = webdriver.Firefox(options=self.options)
         self.driver.get("http://localhost:8002/prestashop/fr/")
