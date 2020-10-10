@@ -17,13 +17,13 @@ class FoxCommand(unittest.TestCase):
     def setUp(self):
         self.options = webdriver.FirefoxOptions()
         self.options.set_preference("browser.privatebrowsing.autostart", True)
-        #self.options.set_preference("browser.cache.disk.enable", False)
-        #self.options.set_preference("browser.cache.memory.enable", False)
-        #self.options.set_preference("browser.cache.offline.enable", False)
-        #self.options.set_preference("network.http.use-cache", False)
+        self.options.set_preference("browser.cache.disk.enable", False)
+        self.options.set_preference("browser.cache.memory.enable", False)
+        self.options.set_preference("browser.cache.offline.enable", False)
+        self.options.set_preference("network.http.use-cache", False)
         self.options.headless=True
         self.driver = webdriver.Firefox(options=self.options)
-        self.driver.get("http://localhost:8002/prestashop/fr/")
+        self.driver.get("http://192.168.34.30:8002/prestashop/fr/")
 
     def tests(self):
         """
@@ -45,7 +45,7 @@ class FoxCommand(unittest.TestCase):
         WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Coussin'))
         main_page.put_art_qty()
         main_page.add_to_cart()
-        main_page.get('http://localhost:8002/prestashop/fr/panier?action=show')
+        main_page.get('http://192.168.34.30:8002/prestashop/fr/panier?action=show')
         WebDriverWait(self.driver,20).until(expected_conditions.title_contains('Panier'))
         assert main_page.check_article_cart(), "Article name not match ..."
         assert main_page.check_article_qty_cart(), "Article quantity not match ..."
