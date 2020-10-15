@@ -27,7 +27,7 @@
                 "type": "docker-push",
                 "login": "true",
                 "login_username": "lhornok",
-                "login_password": "@@@Salami111dockerhub"
+                "login_password": "2ee43ec5-87d2-4963-9180-bf1563b5e87f"
             }
         ]
     ]
